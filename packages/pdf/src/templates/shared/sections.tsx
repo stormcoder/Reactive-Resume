@@ -664,7 +664,7 @@ const SkillsSection = ({ sectionId = "skills", sectionData }: ItemSectionProps<S
 						<SectionItemHeader>
 							<View style={composeStyles(inlineStyle)}>
 								<Icon name={item.icon as IconName} />
-								<Bold>{item.name}</Bold>
+								<Bold style={{ flex: 1 }}>{item.name}</Bold>
 							</View>
 						</SectionItemHeader>
 
