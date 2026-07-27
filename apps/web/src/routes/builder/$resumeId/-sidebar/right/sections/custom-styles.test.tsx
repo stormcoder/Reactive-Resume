@@ -348,9 +348,7 @@ describe("CustomStylesSectionBuilder", () => {
 		expect(borderWidthInput).toHaveValue(24);
 		expect(updateResumeData).toHaveBeenCalledTimes(1);
 
-		const recipe = updateResumeData.mock.calls[0]?.[0] as (draft: {
-			metadata: { styleRules: StyleRule[] };
-		}) => void;
+		const recipe = updateResumeData.mock.calls[0]?.[0] as (draft: { metadata: { styleRules: StyleRule[] } }) => void;
 		const draft = { metadata: { styleRules: structuredClone(styleRules) } };
 		recipe(draft);
 
