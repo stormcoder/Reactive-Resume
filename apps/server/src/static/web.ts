@@ -161,7 +161,7 @@ function createRootSeoMarkup(canonicalUrl: string) {
 export const serveWebDistStatic = serveStatic({
 	root: staticRoot,
 	onFound: (_path, context) => {
-		if (context.req.path.startsWith("/videos/")) {
+		if (/^\/videos\/.*-v\d+\.(?:mp4|webp)$/.test(context.req.path)) {
 			context.header("Cache-Control", "public, max-age=31536000, immutable");
 		}
 	},

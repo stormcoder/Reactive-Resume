@@ -86,6 +86,14 @@ describe("web app fallback classification", () => {
 		});
 
 		expect(headers.get("Cache-Control")).toBe("public, max-age=31536000, immutable");
+
+		const unversionedHeaders = new Headers();
+		await staticOptions?.onFound?.("", {
+			req: { path: "/videos/timelapse.mp4" },
+			header: (name, value) => unversionedHeaders.set(name, value),
+		});
+
+		expect(unversionedHeaders.get("Cache-Control")).toBeNull();
 	});
 
 	it.each(["/", "/alice/resume"])("sets framing and report-only CSP security headers on %s", async (pathname) => {
