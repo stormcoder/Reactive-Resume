@@ -2,6 +2,7 @@ import { existsSync } from "node:fs";
 import fs from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import { serveStatic } from "@hono/node-server/serve-static";
+import { env } from "@reactive-resume/env/server";
 
 function resolveWebDistPath() {
 	const candidates = [
@@ -193,8 +194,7 @@ function notFoundResponse(options: { head?: boolean; noindex?: boolean } = {}) {
 // ponytail: GET and HEAD share the same routing logic; method determines body presence
 export async function handleWebApp(request: Request) {
 	const isHead = request.method === "HEAD";
-	const requestUrl = new URL(request.url);
-	const pathname = requestUrl.pathname;
+	const pathname = new URL(request.url).pathname;
 
 	if (!isNoindexShellPath(pathname) && isAssetPath(pathname)) {
 		return new Response(isHead ? null : "Not Found", { status: 404 });
@@ -206,7 +206,7 @@ export async function handleWebApp(request: Request) {
 	if (isHead) return new Response(null, { status: 200, headers });
 
 	const html = await fs.readFile(indexHtmlPath, "utf-8");
-	const canonicalUrl = new URL("/", requestUrl.origin).toString();
+	const canonicalUrl = new URL("/", env.APP_URL).toString();
 	const responseHtml = pathname === "/" ? html.replace("</head>", `${createRootSeoMarkup(canonicalUrl)}</head>`) : html;
 
 	return new Response(responseHtml, { headers });

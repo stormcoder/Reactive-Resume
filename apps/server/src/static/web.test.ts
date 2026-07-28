@@ -2,6 +2,7 @@ import fs from "node:fs/promises";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 
 const mocks = vi.hoisted(() => ({
+	env: { APP_URL: "https://rxresu.me" },
 	serveStatic: vi.fn((_options?: unknown) => vi.fn()),
 }));
 
@@ -17,6 +18,10 @@ vi.mock("node:fs/promises", () => ({
 
 vi.mock("@hono/node-server/serve-static", () => ({
 	serveStatic: mocks.serveStatic,
+}));
+
+vi.mock("@reactive-resume/env/server", () => ({
+	env: mocks.env,
 }));
 
 type StaticOptions = {
@@ -62,15 +67,16 @@ describe("web app fallback classification", () => {
 			</html>
 		`);
 
-		const response = await handleWebApp(new Request("https://example.com/?utm_source=search"));
+		const response = await handleWebApp(new Request("http://server.internal/?utm_source=search"));
 		const html = await response.text();
 
-		expect(html).toContain('<link rel="canonical" href="https://example.com/">');
+		expect(html).toContain('<link rel="canonical" href="https://rxresu.me/">');
 		expect(html).toContain('<link rel="preload" href="/videos/timelapse-v1.webp" as="image" fetchpriority="high">');
-		expect(html).toContain('<meta property="og:url" content="https://example.com/">');
-		expect(html).toContain('<meta property="og:image" content="https://example.com/opengraph/banner.jpg">');
+		expect(html).toContain('<meta property="og:url" content="https://rxresu.me/">');
+		expect(html).toContain('<meta property="og:image" content="https://rxresu.me/opengraph/banner.jpg">');
 		expect(html).toContain('id="reactive-resume-structured-data"');
 		expect(html).toContain('"@type":["SoftwareApplication","WebApplication"]');
+		expect(html).toContain('"url":"https://rxresu.me/"');
 		expect(html).not.toContain("utm_source");
 
 		const dashboardResponse = await handleWebApp(new Request("https://example.com/dashboard"));
