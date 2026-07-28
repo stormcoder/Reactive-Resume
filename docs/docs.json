@@ -116,6 +116,28 @@
 						]
 					},
 					{
+						"group": "Comparisons",
+						"pages": [
+							"comparisons/reactive-resume-vs-canva",
+							"comparisons/reactive-resume-vs-adobe-express",
+							"comparisons/reactive-resume-vs-overleaf",
+							"comparisons/reactive-resume-vs-resume-com",
+							"comparisons/reactive-resume-vs-myperfectresume",
+							"comparisons/reactive-resume-vs-resume-now",
+							"comparisons/reactive-resume-vs-resume-io",
+							"comparisons/reactive-resume-vs-zety",
+							"comparisons/reactive-resume-vs-kickresume",
+							"comparisons/reactive-resume-vs-resumegemini",
+							"comparisons/reactive-resume-vs-jobscan",
+							"comparisons/reactive-resume-vs-resumod",
+							"comparisons/reactive-resume-vs-rezi",
+							"comparisons/reactive-resume-vs-careercircle",
+							"comparisons/reactive-resume-vs-novoresume",
+							"comparisons/reactive-resume-vs-livecareer",
+							"comparisons/reactive-resume-vs-freesumes"
+						]
+					},
+					{
 						"group": "Self-Hosting",
 						"pages": ["self-hosting/docker", "self-hosting/examples", "self-hosting/sso", "self-hosting/migration"]
 					},
