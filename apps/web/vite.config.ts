@@ -60,7 +60,7 @@ export default defineConfig({
 				handler: (html) =>
 					html.replace(
 						/<script\b(?=[^>]*\btype="module")(?=[^>]*\bsrc="\/assets\/[^"]+")(?![^>]*\bdata-cfasync=)[^>]*>/,
-						(script) => script.replace(">", ' data-cfasync="false">'),
+						(script) => script.replace('src="', 'data-cfasync="false" src="'),
 					),
 			},
 		},
