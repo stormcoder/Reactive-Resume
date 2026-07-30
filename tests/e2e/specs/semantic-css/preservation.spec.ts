@@ -1,17 +1,7 @@
 import { readSemanticCssFixture, updateSemanticCssFixture } from "../../fixtures/db";
-import { createSampleResumeFromDashboard, openSidebarSection } from "../../fixtures/resume";
+import { createSampleResumeFromDashboard } from "../../fixtures/resume";
 import { resumeIdFromPage } from "../../fixtures/semantic-css";
 import { expect, test } from "../../fixtures/test";
-
-test("@semantic-css keeps the legacy editor available while both flags are off", async ({
-	authPage: page,
-}, testInfo) => {
-	await createSampleResumeFromDashboard(page, testInfo);
-	await openSidebarSection(page, "Custom Styles");
-
-	await expect(page.getByLabel("Target Scope")).toBeVisible();
-	await expect(page.getByRole("textbox", { name: "Semantic CSS stylesheet" })).toHaveCount(0);
-});
 
 test("@semantic-css preserves a persisted stylesheet through an old-client resume update", async ({
 	authPage: page,

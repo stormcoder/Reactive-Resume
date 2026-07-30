@@ -120,6 +120,7 @@ export async function updateSemanticCssFixture(
 		}
 		if (update.legacyStyleRule) {
 			const metadata = data.metadata as Record<string, unknown>;
+			delete metadata.stylesheet;
 			metadata.styleRules = structuredClone(legacyParityRules);
 		}
 		if (update.hidePicture) {

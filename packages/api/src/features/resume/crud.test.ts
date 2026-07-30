@@ -8,8 +8,6 @@ const mocks = vi.hoisted(() => ({
 	getById: vi.fn(),
 }));
 
-vi.mock("@reactive-resume/env/server", () => ({ env: { FLAG_SEMANTIC_CSS_DEFAULT: false } }));
-
 vi.mock("../../context", async () => {
 	const { os } = await vi.importActual<typeof import("@orpc/server")>("@orpc/server");
 	return {

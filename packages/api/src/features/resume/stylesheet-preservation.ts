@@ -6,7 +6,6 @@ import { createSampleResumeData } from "@reactive-resume/schema/resume/sample";
 import { EMPTY_SEMANTIC_CSS_SOURCE } from "@reactive-resume/schema/resume/stylesheet";
 
 type CreateResumeDataOptions = {
-	semanticCssDefault: boolean;
 	withSampleData?: boolean;
 	name?: string;
 	locale?: Locale;
@@ -30,13 +29,11 @@ export function createResumeData(options: CreateResumeDataOptions): ResumeData {
 	const data = structuredClone(options.withSampleData ? createSampleResumeData(options.name) : defaultResumeData);
 
 	if (options.locale) data.metadata.page.locale = options.locale;
-	if (options.semanticCssDefault) {
-		data.metadata.stylesheet = {
-			mode: "semantic",
-			source: { languageVersion: 1, text: EMPTY_SEMANTIC_CSS_SOURCE },
-			applied: { languageVersion: 1, text: EMPTY_SEMANTIC_CSS_SOURCE },
-		};
-	}
+	data.metadata.stylesheet = {
+		mode: "semantic",
+		source: { languageVersion: 1, text: EMPTY_SEMANTIC_CSS_SOURCE },
+		applied: { languageVersion: 1, text: EMPTY_SEMANTIC_CSS_SOURCE },
+	};
 
 	return data;
 }

@@ -27,17 +27,3 @@ export function LegacyStylesheetBanner({ disabled, onActivate }: LegacyStyleshee
 		</Alert>
 	);
 }
-
-export function SemanticStylesheetReadOnlyNotice() {
-	return (
-		<Alert>
-			<InfoIcon />
-			<AlertTitle>
-				<Trans>Semantic styles remain active</Trans>
-			</AlertTitle>
-			<AlertDescription>
-				<Trans>This instance does not currently allow Semantic CSS editing.</Trans>
-			</AlertDescription>
-		</Alert>
-	);
-}

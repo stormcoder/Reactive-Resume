@@ -95,19 +95,17 @@ describe("hasRenderDataChanged", () => {
 });
 
 describe("createResumeData", () => {
-	it("seeds empty semantic source only for the default-enabled cohort", () => {
-		expect(createResumeData({ semanticCssDefault: true }).metadata.stylesheet).toEqual({
+	it("always seeds an empty semantic stylesheet", () => {
+		expect(createResumeData({}).metadata.stylesheet).toEqual({
 			mode: "semantic",
 			source: { languageVersion: 1, text: "@version 1;\n" },
 			applied: { languageVersion: 1, text: "@version 1;\n" },
 		});
-		expect(createResumeData({ semanticCssDefault: false }).metadata.stylesheet).toBeUndefined();
 	});
 
 	it("clones normal and sample defaults instead of mutating shared data", () => {
-		const normal = createResumeData({ semanticCssDefault: false, locale: "de-DE" });
+		const normal = createResumeData({ locale: "de-DE" });
 		const sample = createResumeData({
-			semanticCssDefault: true,
 			withSampleData: true,
 			name: "Sample Person",
 			locale: "de-DE",

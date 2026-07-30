@@ -1,4 +1,3 @@
-import { env } from "@reactive-resume/env/server";
 import { resumeDataSchema } from "@reactive-resume/schema/resume/data";
 import { generateId, generateRandomName, slugify } from "@reactive-resume/utils/string";
 import { protectedProcedure } from "../../context";
@@ -74,7 +73,6 @@ export const crudRouter = {
 				locale: context.locale,
 				userId: context.user.id,
 				data: createResumeData({
-					semanticCssDefault: env.FLAG_SEMANTIC_CSS_DEFAULT,
 					withSampleData: input.withSampleData,
 					name: input.name,
 					locale: context.locale,

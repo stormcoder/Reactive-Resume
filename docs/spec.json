@@ -9969,23 +9969,13 @@
 										"smtpEnabled": {
 											"type": "boolean",
 											"description": "Whether outbound email (SMTP) is configured on this instance."
-										},
-										"semanticCssAuthoring": {
-											"type": "boolean",
-											"description": "Whether Semantic CSS authoring is enabled on this instance."
-										},
-										"semanticCssDefault": {
-											"type": "boolean",
-											"description": "Whether new resumes start in Semantic CSS mode."
 										}
 									},
 									"required": [
 										"disableSignups",
 										"disableEmailAuth",
 										"showSponsors",
-										"smtpEnabled",
-										"semanticCssAuthoring",
-										"semanticCssDefault"
+										"smtpEnabled"
 									]
 								}
 							}
