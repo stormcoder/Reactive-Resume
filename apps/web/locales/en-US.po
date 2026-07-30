@@ -2961,6 +2961,10 @@ msgstr "Norwegian"
 msgid "Not connected"
 msgstr "Not connected"
 
+#: src/features/resume/stylesheet/editor.tsx
+msgid "Not sure what to write?"
+msgstr "Not sure what to write?"
+
 #: src/features/applications/components/application-form-sheet.tsx
 #: src/libs/resume/section.tsx
 msgid "Notes"
@@ -3039,6 +3043,7 @@ msgstr "OpenAI-compatible"
 msgid "OpenRouter"
 msgstr "OpenRouter"
 
+#: src/features/resume/stylesheet/editor.tsx
 #: src/routes/_home/-sections/donate.tsx
 #: src/routes/_home/-sections/footer.tsx
 msgid "opens in new tab"
@@ -3424,6 +3429,10 @@ msgstr "Reactive Resume v<0>{__APP_VERSION__}</0>"
 #: src/dialogs/resume/import.tsx
 msgid "Reactive Resume v4 (JSON)"
 msgstr "Reactive Resume v4 (JSON)"
+
+#: src/features/resume/stylesheet/editor.tsx
+msgid "Read the Applying Custom Styles guide."
+msgstr "Read the Applying Custom Styles guide."
 
 #: src/features/applications/components/application-form-sheet.tsx
 msgid "Reading…"
